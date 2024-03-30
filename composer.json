@@ -1,0 +1,9 @@
+{
+    "name": "www/students_portal",
+    "autoload": {
+        "psr-4": {
+            "Www\\StudentsPortal\\": "src/"
+        }
+    },
+    "require": {}
+}
