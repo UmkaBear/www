@@ -48,4 +48,14 @@ button:hover {
 }
 .button_form_authorization {
     margin: auto;
+    display: flex;
+    align-items: center;
+}
+a {
+    background-color: #e3e3e3;
+    text-decoration: none;
+    padding: 10px;
+    color: #717171;
+    text-align: center;
+    width: 130px;
 }
