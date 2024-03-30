@@ -5,8 +5,19 @@ body {
     line-height: 18px;
     height: 100vh;
 }
+.container{
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    padding: 20px;
+    border-radius: 15px;
+}
+.container h1{
+    text-align: center;
+}
 .form_authorization {
     display: flex;
     flex-direction: column;
-    width: 400px;
+    width: 300px;
+}
+.form_authorization input,label,button{
+    margin: 5px;
 }
