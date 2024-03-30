@@ -4,6 +4,9 @@ body {
     justify-content: center;
     line-height: 18px;
     height: 100vh;
+    font-family: "Varela Round", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 .container{
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
@@ -20,4 +23,29 @@ body {
 }
 .form_authorization input,label,button{
     margin: 5px;
+}
+.form_authorization input{
+    border: unset;
+    padding: 10px;
+    border-bottom: 2px solid #e3e3e3;
+    outline: none;
+}
+.login, .password{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+button {
+    padding: 10px;
+    background-color: #e3e3e3;
+    border: unset;
+    cursor: pointer;
+    color: #717171;
+    width: 125px;
+}
+button:hover {
+    background: #e6e6ff;
+}
+.button_form_authorization {
+    margin: auto;
 }
