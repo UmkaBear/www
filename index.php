@@ -19,12 +19,8 @@
             <h1>Авторизация</h1>
             <form class="form_authorization" action="#" method="post">
                 <div class="login">
-                    <div>
                         <label for="username">Логин:</label>
-                    </div>
-                    <div>
                         <input type="text" name="username" placeholder="Введите логин:">
-                    </div>
                 </div>
                 <div class="password">
                     <label for="password">Пароль:</label>

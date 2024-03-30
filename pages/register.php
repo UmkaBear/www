@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
-    <title>Авторизация</title>
+    <title>Регистрация</title>
 </head>
 <body>
     <header>
@@ -16,19 +16,26 @@
     </header>
     <main>
         <div class="container">
-            <h1>Авторизация</h1>
+            <h1>Регистрация</h1>
             <form class="form_authorization" action="#" method="post">
+                <div class="rule">
+                        <label for="rule">Вы:</label>
+                        <select id="rule" name="fruits">
+                            <option value="student">Студент</option>
+                            <option value="teacher">Преподователь</option>
+                        </select>
+                </div>
                 <div class="login">
-                    <div>
                         <label for="username">Логин:</label>
-                    </div>
-                    <div>
                         <input type="text" name="username" placeholder="Введите логин:">
-                    </div>
                 </div>
                 <div class="password">
                     <label for="password">Пароль:</label>
                     <input type="password" name="password" placeholder="Введите пароль:">
+                </div>
+                <div class="email">
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" placeholder="Введите Email:">
                 </div>
                 <div class="button_form_authorization">
                     <button type="submit">Отправить</button>
