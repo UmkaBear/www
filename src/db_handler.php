@@ -13,8 +13,7 @@ class db_handler{
     private $database;
     private $connect;
 
-    function __construct()
-    {
+    function __construct(){
         $this->sqldb = $_ENV["db_host"];
         $this->sqldb_username = $_ENV["db_login"];
         $this->sqldb_password = $_ENV["db_password"];
@@ -51,8 +50,7 @@ class db_handler{
         
     }
 
-    public function show_students()
-    {
+    public function show_students(){
         $query = "SELECT * FROM users";
         $result = mysqli_query($this->connect, $query);
         if (mysqli_num_rows($result) > 0) {
@@ -71,5 +69,15 @@ class db_handler{
             }
         } 
     }
+    public function delete_student(){
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+
+            $query = "delete FROM `users`WHERE `id` = '$id'";
+            $result = mysqli_query($this->connect, $query);
+            header('Location:/../pages/workplace.php');
+        } else echo "Ошибка";
+    }
+    
     
 }   

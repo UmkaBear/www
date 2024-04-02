@@ -1,3 +1,10 @@
+<?php
+session_start();
+require(__DIR__ . '/../vendor/autoload.php');
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +26,7 @@
             <form class="form_authorization" action="" method="GET">
             <h1>Удалить ученика?</h1>
             <div class="button_form_authorization">
-                <a href="src/delite.php?id=<?php echo $id; ?>">Подтвердить</a>
+                <a href="/../src/submitForm/delete.php?id=<?php echo $id; ?>">Подтвердить</a>
                 <a href="workplace.php" class="close">Закрыть окно</a>
             </div>
         </form>
