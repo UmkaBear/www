@@ -34,5 +34,17 @@ class db_handler{
         $class = $_POST["class"];
         $sql = "INSERT INTO `users` (`rule`, `username`, `userlastname`, `birthday`, `userlogin`, `password`, `email`, `class`) VALUES ('$rule', '$username', '$userlastname', '$birthday', '$userlogin', '$password', '$email', '$class')";
         $result = mysqli_query($this->connect, $sql);
+        header('Location:../../index.php');
+    }
+    public function loginUser(){
+        $userlogin = $_POST["userlogin"];
+        $password = $_POST["password"];
+        $check_user = mysqli_query($this->connect, "SELECT * FROM `users` WHERE `userlogin` = '$userlogin' AND `password` = '$password'");
+        if (mysqli_num_rows($check_user) > 0) {
+            header('Location:../../pages/workplace.php');
+        } else {
+            header('Location:../../index.php');
+        }
+        
     }
 }   

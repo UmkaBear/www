@@ -17,10 +17,10 @@
     <main>
         <div class="container">
             <h1>Авторизация</h1>
-            <form class="form_authorization" action="#" method="post">
+            <form class="form_authorization" action="src/submitForm/login.php" method="post">
                 <div class="login">
-                        <label for="username">Логин:</label>
-                        <input type="text" name="username" placeholder="Введите логин:">
+                        <label for="userlogin">Логин:</label>
+                        <input type="text" name="userlogin" placeholder="Введите логин:">
                 </div>
                 <div class="password">
                     <label for="password">Пароль:</label>
