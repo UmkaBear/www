@@ -1,0 +1,15 @@
+{
+    "name": "www/students_portal",
+    "authors": [
+        {
+            "name": "UmkaBear",
+            "email": "dfakhiev@yandex.ru"
+        }
+    ],
+    "autoload": {
+        "files": ["src/db_handler.php"]
+    },
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    }
+}

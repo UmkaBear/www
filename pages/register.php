@@ -1,5 +1,7 @@
 <?php
-require($_SERVER['DOCUMENT_ROOT'].'/vendor/autoload.php');
+require(__DIR__ . '/../vendor/autoload.php');
+$db_db_handler_class = new db_handler();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +22,7 @@ require($_SERVER['DOCUMENT_ROOT'].'/vendor/autoload.php');
     <main>
         <div class="container">
             <h1>Регистрация</h1>
-            <form class="form_authorization" action="#" method="post">
+            <form class="form_authorization" action="/../src/submitForm/register.php" method="post">
                 <div class="rule">
                         <label for="rule">Вы:</label>
                         <select name="rule">

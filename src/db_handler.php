@@ -1,5 +1,10 @@
 <?php   
 
+use Dotenv\Dotenv;
+require __DIR__ . '/../vendor/autoload.php';
+$dotenv = Dotenv::createImmutable(__DIR__ . '/../');
+$dotenv->load();
+
 class db_handler{
 
     private $sqldb;
@@ -8,14 +13,14 @@ class db_handler{
     private $database;
     private $connect;
 
-    public function __construct()
+    function __construct()
     {
         $this->sqldb = $_ENV["db_host"];
         $this->sqldb_username = $_ENV["db_login"];
         $this->sqldb_password = $_ENV["db_password"];
         $this->database = $_ENV["db_database"];
-
-        $this->connect = new PDO($this->sqldb,$this->sqldb_username,$this->sqldb_password,$this->database);
+        $this->connect = mysqli_connect($this->sqldb, $this->sqldb_username, $this->sqldb_password, $this->database);
+        
     }
 
     public function createUser(){
@@ -27,8 +32,7 @@ class db_handler{
         $password = $_POST["password"];
         $email = $_POST["email"];
         $class = $_POST["class"];
-
-        $sql = "INSERT INTO users (rule, username,userlastname,birthday,userlogin,password,email,class) VALUES ('$rule', $username,$userlastname,$birthday,$userlogin,$password.$email.$class)";
-        $registration = $this->connect->exec($sql);
+        $sql = "INSERT INTO `users` (`rule`, `username`, `userlastname`, `birthday`, `userlogin`, `password`, `email`, `class`) VALUES ('$rule', '$username', '$userlastname', '$birthday', '$userlogin', '$password', '$email', '$class')";
+        $result = mysqli_query($this->connect, $sql);
     }
 }   
