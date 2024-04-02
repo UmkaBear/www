@@ -5,5 +5,7 @@
             "Www\\StudentsPortal\\": "src/"
         }
     },
-    "require": {}
+    "require": {
+        "symfony/dotenv": "^7.0"
+    }
 }

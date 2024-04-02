@@ -1,9 +1,13 @@
-<?php
-$dotenv = Dotenv\Dotenv :: createImmutable(__DIR__);
-$dotenv->load();
-echo "sad";
+<?php   
+echo 'asd';
+
+// use Symfony\Component\Dotenv\Dotenv;
+
+// $dotenv = new Dotenv();
+// $dotenv->load($_SERVER['DOCUMENT_ROOT'].'/.env');
+
 class db_handler{
-    
+
     private $sqldb;
     private $sqldb_username;
     private $sqldb_password;

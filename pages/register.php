@@ -1,6 +1,6 @@
 <?php
-require(__DIR__ . '/../vendor/autoload.php');
-require(__DIR__ . '/../src/db_handler.php');
+require($_SERVER['DOCUMENT_ROOT'].'/vendor/autoload.php');
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
