@@ -20,22 +20,38 @@
             <form class="form_authorization" action="#" method="post">
                 <div class="rule">
                         <label for="rule">Вы:</label>
-                        <select id="rule" name="fruits">
+                        <select id="rule" name="rule">
                             <option value="student">Студент</option>
                             <option value="teacher">Преподователь</option>
                         </select>
                 </div>
+                <div class="username">
+                        <label for="username">Имя:</label>
+                        <input type="text" name="username" placeholder="Введите Имя">
+                </div>
+                <div class="userlastname">
+                        <label for="userlastname">Фамилия:</label>
+                        <input type="text" name="userlastname" placeholder="Введите Фамилию">
+                </div>
+                <div class="birthday">
+                    <label for="birthday">День рождения:</label>
+                    <input type="date" name="birthday">
+                </div>
                 <div class="login">
-                        <label for="username">Логин:</label>
-                        <input type="text" name="username" placeholder="Введите логин:">
+                        <label for="userlogin">Логин:</label>
+                        <input type="text" name="userlogin" placeholder="Введите логин">
                 </div>
                 <div class="password">
                     <label for="password">Пароль:</label>
-                    <input type="password" name="password" placeholder="Введите пароль:">
+                    <input type="password" name="password" placeholder="Введите пароль">
                 </div>
                 <div class="email">
                     <label for="email">Email:</label>
-                    <input type="email" name="email" placeholder="Введите Email:">
+                    <input type="email" name="email" placeholder="Введите Email">
+                </div>
+                <div class="class">
+                    <label for="class">Класс:</label>
+                    <input type="text" name="class" placeholder="Введите Класс">
                 </div>
                 <div class="button_form_authorization">
                     <button type="submit">Отправить</button>

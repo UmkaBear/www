@@ -22,7 +22,7 @@ body {
 .form_authorization {
     display: flex;
     flex-direction: column;
-    width: 300px;
+    width: 350px;
 }
 
 .form_authorization input,
@@ -42,10 +42,15 @@ select {
 .login,
 .password,
 .email,
-.rule {
+.username,
+.userlastname,
+.rule,  
+.birthday,
+.class {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-left: 30px;
 }
 
 button {
