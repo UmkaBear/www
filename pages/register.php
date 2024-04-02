@@ -1,3 +1,7 @@
+<?php
+require(__DIR__ . '/../vendor/autoload.php');
+require(__DIR__ . '/../src/db_handler.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +24,7 @@
             <form class="form_authorization" action="#" method="post">
                 <div class="rule">
                         <label for="rule">Вы:</label>
-                        <select id="rule" name="rule">
+                        <select name="rule">
                             <option value="student">Студент</option>
                             <option value="teacher">Преподователь</option>
                         </select>
