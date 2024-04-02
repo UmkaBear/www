@@ -1,6 +1,5 @@
 <?php
 require($_SERVER['DOCUMENT_ROOT'].'/vendor/autoload.php');
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

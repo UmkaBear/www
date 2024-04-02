@@ -1,10 +1,4 @@
 <?php   
-echo 'asd';
-
-// use Symfony\Component\Dotenv\Dotenv;
-
-// $dotenv = new Dotenv();
-// $dotenv->load($_SERVER['DOCUMENT_ROOT'].'/.env');
 
 class db_handler{
 
