@@ -8,6 +8,46 @@ body {
     font-weight: 400;
     font-style: normal;
 }
+table {
+    width: 100%;
+    margin-bottom: 20px;
+    border: 15px solid #e3e3e3;
+    border-top: 5px solid #e3e3e3;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+table th {
+    font-weight: bold;
+    padding: 5px;
+    background: #e3e3e3;
+    border: none;
+    border-bottom: 5px solid #e3e3e3;
+}
+
+table td {
+    padding: 15px;
+    border: none;
+    border-bottom: 5px solid #e3e3e3;
+    border: 2px solid #e3e3e3;
+}
+.button_place {
+    color: #717171;
+    text-decoration: none;
+    padding: 5px 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.button_place a {
+    background-color: #e3e3e3;
+    text-decoration: none;
+    margin: 10px 0 10px 10px;
+    padding: 10px;
+    color: #717171;
+
+}
+
 
 .container {
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
@@ -70,6 +110,9 @@ button:hover {
     margin: auto;
     display: flex;
     align-items: center;
+}
+.button_form_authorization a{
+    margin: 10px;
 }
 
 a {

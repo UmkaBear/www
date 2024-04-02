@@ -15,7 +15,15 @@
 
     </header>
     <main>
-        
+        <div class="container">
+            <form class="form_authorization" action="" method="GET">
+            <h1>Удалить ученика?</h1>
+            <div class="button_form_authorization">
+                <a href="src/delite.php?id=<?php echo $id; ?>">Подтвердить</a>
+                <a href="workplace.php" class="close">Закрыть окно</a>
+            </div>
+        </form>
+        </div>
     </main>
     <footer>
 

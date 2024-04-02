@@ -1,3 +1,7 @@
+<?php
+    require(__DIR__ . '/../vendor/autoload.php');
+    $db_handler_class = new db_handler();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +20,31 @@
     </header>
     <main>
         <div class="container">
-        
+            <div class="button_place">
+                <a class="button_p" href="">Отчет</a>
+            </div>
+            <div>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Роль</th>
+                        <th>Имя</th>
+                        <th>Фамилия</th>
+                        <th>Дата рождения</th>
+                        <th>Руководитель</th>
+                        <th>Класс</th>
+                        <th>Email</th>
+                        <th>Изменить</th>
+                        <th>Удалить</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                            $db_handler_class->show_students();
+                        ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </main>
     <footer>

@@ -1,6 +1,6 @@
 <?php
 require(__DIR__ . '/../vendor/autoload.php');
-$db_db_handler_class = new db_handler();
+$db_handler_class = new db_handler();
 
 ?>
 <!DOCTYPE html>
@@ -26,8 +26,8 @@ $db_db_handler_class = new db_handler();
                 <div class="rule">
                         <label for="rule">Вы:</label>
                         <select name="rule">
-                            <option value="student">Студент</option>
-                            <option value="teacher">Преподователь</option>
+                            <option value="Студент">Студент</option>
+                            <option value="Педогог">Преподователь</option>
                         </select>
                 </div>
                 <div class="username">
