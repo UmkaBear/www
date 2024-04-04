@@ -15,7 +15,22 @@
 
     </header>
     <main>
-        
+        <div class="container">
+            <h1>Отравить Email</h1>
+            <form class="form_authorization" action="/../src/submitForm/sentEmail.php" method="post">
+                <div class="Email">
+                        <label for="email">Email:</label>
+                        <input type="text" name="email" placeholder="Кому:">
+                </div>
+                    <label for="message">Сообщение:</label>
+                    <textarea name="message" id="message" required></textarea>
+                <div class="button_form_authorization">
+                    <button type="submit">Отправить</button>
+                    <a href="workplace.php">Назад</a>
+                </div>
+                
+            </form>
+        </div>
     </main>
     <footer>
 

@@ -24,6 +24,10 @@ class db_handler{
         
     }
 
+    public function sent_email(){
+    
+    }
+
     public function save_update_student(){
         if (isset($_GET['id'])) {
             $id = $_GET['id'];

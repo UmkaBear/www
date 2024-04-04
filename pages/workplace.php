@@ -21,10 +21,12 @@
     <main>
         <div class="container">
             <div class="button_place">
+                <a class="button_p" href="sent_email.php">Отправить Email</a>
                 <a class="button_p" href="reports.php">Отчет</a>
             </div>
             <div>
                 <table>
+                    <p>Студенты:</p>
                     <thead>
                     <tr>
                         <th>Роль</th>
