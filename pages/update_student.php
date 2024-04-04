@@ -22,7 +22,7 @@ $row = $db_handler_class->update_student();
     <main>
     <div class="container">
             <h1>Изменить</h1>
-            <form class="form_authorization" action="/../src/submitForm/update.php" method="post">
+            <form class="form_authorization" action="/../src/submitForm/update.php?id=<?php echo $row['id'] ?>"  method="post">
                 <div class="rule">
                         <label for="rule">Вы:</label>
                         <select name="rule" value="<?php echo $row['rule'] ?>">
@@ -51,7 +51,7 @@ $row = $db_handler_class->update_student();
                     <input type="text" name="class" placeholder="Введите Класс" required value="<?php echo $row['class'] ?>">
                 </div>
                 <div class="button_form_authorization">
-                    <button type="submit">Сохранить</button>
+                    <button type="submit" name="save_update_student">Сохранить</button>
                     <a href="/pages/workplace.php">Назад</a>
                 </div>
                 

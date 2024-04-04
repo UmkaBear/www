@@ -24,6 +24,21 @@ class db_handler{
         
     }
 
+    public function save_update_student(){
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+
+        $a_rule = $_POST['rule'];
+        $a_name = $_POST['username'];
+        $a_lastname = $_POST['userlastname'];
+        $a_date = $_POST['birthday'];
+        $a_email = $_POST['email'];
+        $a_class = $_POST['class'];
+        $query = "update `users` set `rule`='$a_rule',`username`='$a_name',`userlastname`='$a_lastname',`birthday`='$a_date',`email`='$a_email',`class`='$a_class' where `id` = '$id'";
+        $result = mysqli_query($this->connect, $query);
+        header('Location:../../pages/workplace.php');
+        }
+    }
     public function update_student()
     {
         if (isset($_GET['id'])) {
