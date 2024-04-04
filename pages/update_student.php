@@ -1,3 +1,8 @@
+<?php
+require(__DIR__ . '/../vendor/autoload.php');
+$db_handler_class = new db_handler();
+$row = $db_handler_class->update_student();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +20,43 @@
 
     </header>
     <main>
-        
+    <div class="container">
+            <h1>Изменить</h1>
+            <form class="form_authorization" action="/../src/submitForm/update.php" method="post">
+                <div class="rule">
+                        <label for="rule">Вы:</label>
+                        <select name="rule" value="<?php echo $row['rule'] ?>">
+                            <option value="Студент">Студент</option>
+                            <option value="Педагог">Преподователь</option>
+                        </select>
+                </div>
+                <div class="username">
+                        <label for="username">Имя:</label>
+                        <input type="text" name="username" placeholder="Введите Имя" required value="<?php echo $row['username'] ?>">
+                </div>
+                <div class="userlastname">
+                        <label for="userlastname">Фамилия:</label>
+                        <input type="text" name="userlastname" placeholder="Введите Фамилию" required value="<?php echo $row['userlastname'] ?>">
+                </div>
+                <div class="birthday">
+                    <label for="birthday">День рождения:</label>
+                    <input type="date" name="birthday" required value="<?php echo $row['birthday'] ?>">
+                </div>
+                <div class="email">
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" placeholder="Введите Email" required value="<?php echo $row['email'] ?>">
+                </div>
+                <div class="class">
+                    <label for="class">Класс:</label>
+                    <input type="text" name="class" placeholder="Введите Класс" required value="<?php echo $row['class'] ?>">
+                </div>
+                <div class="button_form_authorization">
+                    <button type="submit">Сохранить</button>
+                    <a href="/pages/workplace.php">Назад</a>
+                </div>
+                
+            </form>
+        </div>
     </main>
     <footer>
 

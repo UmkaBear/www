@@ -11,7 +11,9 @@ class db_handler{
     private $sqldb_username;
     private $sqldb_password;
     private $database;
-    private $connect;
+    private $connect;   
+
+    public $row;
 
     function __construct(){
         $this->sqldb = $_ENV["db_host"];
@@ -20,6 +22,19 @@ class db_handler{
         $this->database = $_ENV["db_database"];
         $this->connect = mysqli_connect($this->sqldb, $this->sqldb_username, $this->sqldb_password, $this->database);
         
+    }
+
+    public function update_student()
+    {
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+
+            $query = "select * from `users` where `id` = '$id'";
+            $result = mysqli_query($this->connect, $query);
+            $row = mysqli_fetch_assoc($result);
+            
+        }
+        return $row;
     }
 
     public function createUser(){

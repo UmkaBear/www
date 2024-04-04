@@ -123,6 +123,9 @@ a {
     text-align: center;
     width: 130px;
 }
+a:hover{
+    background-color: #e6e6ff;
+}
 
 select {
     width: 210px;
