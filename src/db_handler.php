@@ -55,17 +55,19 @@ class db_handler{
         $result = mysqli_query($this->connect, $query);
         if (mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
-                echo '<tr>';
-                echo '<td>' . $row['rule'] . '</td>';
-                echo '<td>' . $row['username'] . '</td>';
-                echo '<td>' . $row['userlastname'] . '</td>';
-                echo '<td>' . $row['birthday'] . '</td>';
-                echo '<td>' . $row['teacher'] . '</td>';
-                echo '<td>' . $row['class'] . '</td>';
-                echo '<td>' . $row['email'] . '</td>';
-                echo '<td><a href="update_student.php?id=' . $row['id'] . '">Изменить</a></td>';
-                echo '<td><a href="delete_students.php?id=' . $row['id'] . '">Удалить</a></td>';
-                echo '</tr>';
+                if ($row['rule'] != 'Педагог') {
+                    echo '<tr>';
+                    echo '<td>' . $row['rule'] . '</td>';
+                    echo '<td>' . $row['username'] . '</td>';
+                    echo '<td>' . $row['userlastname'] . '</td>';
+                    echo '<td>' . $row['birthday'] . '</td>';
+                    echo '<td>' . $row['teacher'] . '</td>';
+                    echo '<td>' . $row['class'] . '</td>';
+                    echo '<td>' . $row['email'] . '</td>';
+                    echo '<td><a href="update_student.php?id=' . $row['id'] . '">Изменить</a></td>';
+                    echo '<td><a href="delete_students.php?id=' . $row['id'] . '">Удалить</a></td>';
+                    echo '</tr>';
+                }
             }
         } 
     }

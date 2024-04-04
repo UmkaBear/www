@@ -27,36 +27,36 @@ $db_handler_class = new db_handler();
                         <label for="rule">Вы:</label>
                         <select name="rule">
                             <option value="Студент">Студент</option>
-                            <option value="Педогог">Преподователь</option>
+                            <option value="Педагог">Преподователь</option>
                         </select>
                 </div>
                 <div class="username">
                         <label for="username">Имя:</label>
-                        <input type="text" name="username" placeholder="Введите Имя">
+                        <input type="text" name="username" placeholder="Введите Имя" required>
                 </div>
                 <div class="userlastname">
                         <label for="userlastname">Фамилия:</label>
-                        <input type="text" name="userlastname" placeholder="Введите Фамилию">
+                        <input type="text" name="userlastname" placeholder="Введите Фамилию" required>
                 </div>
                 <div class="birthday">
                     <label for="birthday">День рождения:</label>
-                    <input type="date" name="birthday">
+                    <input type="date" name="birthday" required>
                 </div>
                 <div class="login">
                         <label for="userlogin">Логин:</label>
-                        <input type="text" name="userlogin" placeholder="Введите логин">
+                        <input type="text" name="userlogin" placeholder="Введите логин" required>
                 </div>
                 <div class="password">
                     <label for="password">Пароль:</label>
-                    <input type="password" name="password" placeholder="Введите пароль">
+                    <input type="password" name="password" placeholder="Введите пароль" required>
                 </div>
                 <div class="email">
                     <label for="email">Email:</label>
-                    <input type="email" name="email" placeholder="Введите Email">
+                    <input type="email" name="email" placeholder="Введите Email" required>
                 </div>
                 <div class="class">
                     <label for="class">Класс:</label>
-                    <input type="text" name="class" placeholder="Введите Класс">
+                    <input type="text" name="class" placeholder="Введите Класс" required>
                 </div>
                 <div class="button_form_authorization">
                     <button type="submit">Отправить</button>
