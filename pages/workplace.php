@@ -21,7 +21,7 @@
     <main>
         <div class="container">
             <div class="button_place">
-                <a class="button_p" href="">Отчет</a>
+                <a class="button_p" href="reports.php">Отчет</a>
             </div>
             <div>
                 <table>

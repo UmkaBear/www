@@ -23,13 +23,7 @@ $row = $db_handler_class->update_student();
     <div class="container">
             <h1>Изменить</h1>
             <form class="form_authorization" action="/../src/submitForm/update.php?id=<?php echo $row['id'] ?>"  method="post">
-                <div class="rule">
-                        <label for="rule">Вы:</label>
-                        <select name="rule" value="<?php echo $row['rule'] ?>">
-                            <option value="Студент">Студент</option>
-                            <option value="Педагог">Преподователь</option>
-                        </select>
-                </div>
+                
                 <div class="username">
                         <label for="username">Имя:</label>
                         <input type="text" name="username" placeholder="Введите Имя" required value="<?php echo $row['username'] ?>">

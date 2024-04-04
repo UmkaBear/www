@@ -28,13 +28,12 @@ class db_handler{
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
 
-        $a_rule = $_POST['rule'];
         $a_name = $_POST['username'];
         $a_lastname = $_POST['userlastname'];
         $a_date = $_POST['birthday'];
         $a_email = $_POST['email'];
         $a_class = $_POST['class'];
-        $query = "update `users` set `rule`='$a_rule',`username`='$a_name',`userlastname`='$a_lastname',`birthday`='$a_date',`email`='$a_email',`class`='$a_class' where `id` = '$id'";
+        $query = "update `users` set `username`='$a_name',`userlastname`='$a_lastname',`birthday`='$a_date',`email`='$a_email',`class`='$a_class' where `id` = '$id'";
         $result = mysqli_query($this->connect, $query);
         header('Location:../../pages/workplace.php');
         }
@@ -80,6 +79,26 @@ class db_handler{
         
     }
 
+    public function show_teacher(){
+        $query = "SELECT * FROM users";
+        $result = mysqli_query($this->connect, $query);
+        if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                if ($row['rule'] != 'Студент') {
+                    echo '<tr>';
+                    echo '<td>' . $row['rule'] . '</td>';
+                    echo '<td>' . $row['username'] . '</td>';
+                    echo '<td>' . $row['userlastname'] . '</td>';
+                    echo '<td>' . $row['birthday'] . '</td>';
+                    echo '<td>' . $row['class'] . '</td>';
+                    echo '<td>' . $row['email'] . '</td>';
+                    echo '<td><a href="update_student.php?id=' . $row['id'] . '">Изменить</a></td>';
+                    echo '<td><a href="delete_students.php?id=' . $row['id'] . '">Удалить</a></td>';
+                    echo '</tr>';
+                }
+            }
+        } 
+    }
     public function show_students(){
         $query = "SELECT * FROM users";
         $result = mysqli_query($this->connect, $query);
