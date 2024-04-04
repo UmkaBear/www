@@ -84,27 +84,34 @@ class db_handler{
     }
 
     public function show_teacher(){
-        $query = "SELECT * FROM users";
+        $query = "SELECT teachers.*, COUNT(students.id) as student_count
+        FROM USERS AS teachers
+        LEFT JOIN USERS AS students 
+        on students.class = teachers.class
+        where teachers.rule = 'Педагог' AND students.rule = 'Студент'
+        GROUP BY teachers.id";
         $result = mysqli_query($this->connect, $query);
         if (mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
-                if ($row['rule'] != 'Студент') {
-                    echo '<tr>';
-                    echo '<td>' . $row['rule'] . '</td>';
-                    echo '<td>' . $row['username'] . '</td>';
-                    echo '<td>' . $row['userlastname'] . '</td>';
-                    echo '<td>' . $row['birthday'] . '</td>';
-                    echo '<td>' . $row['class'] . '</td>';
-                    echo '<td>' . $row['email'] . '</td>';
-                    echo '<td><a href="update_student.php?id=' . $row['id'] . '">Изменить</a></td>';
-                    echo '<td><a href="delete_students.php?id=' . $row['id'] . '">Удалить</a></td>';
-                    echo '</tr>';
-                }
+                echo '<tr>';
+                echo '<td>' . $row['rule'] . '</td>';
+                echo '<td>' . $row['username'] . '</td>';
+                echo '<td>' . $row['userlastname'] . '</td>';
+                echo '<td>' . $row['birthday'] . '</td>';
+                echo '<td>' . $row['class'] . '</td>';
+                echo '<td>' . $row['email'] . '</td>';
+                echo '<td>' . $row['student_count'] . '</td>';
+                echo '<td><a href="update_student.php?id=' . $row['id'] . '">Изменить</a></td>';
+                echo '<td><a href="delete_students.php?id=' . $row['id'] . '">Удалить</a></td>';
+                echo '</tr>';
             }
         } 
     }
     public function show_students(){
-        $query = "SELECT * FROM users";
+        $query = "SELECT students.*, teachers.userlastname AS teacher 
+        FROM users AS students
+        JOIN users AS teachers ON students.class = teachers.class
+        WHERE students.rule = 'Студент' AND teachers.rule = 'Педагог'";
         $result = mysqli_query($this->connect, $query);
         if (mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
