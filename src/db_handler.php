@@ -5,6 +5,9 @@ require __DIR__ . '/../vendor/autoload.php';
 $dotenv = Dotenv::createImmutable(__DIR__ . '/../');
 $dotenv->load();
 
+use PHPMailer\PHPMailer\PHPMailer;
+
+
 class db_handler{
 
     private $sqldb;
@@ -25,7 +28,33 @@ class db_handler{
     }
 
     public function sent_email(){
-    
+        $email = $_POST['email'];
+        $message = $_POST['message'];
+        $MyEmail = 'dfakhiev@yandex.ru';
+        $password = 'bvtvcgzdyalqzzwk';
+
+        $mail = new PHPMailer();
+        $mail->CharSet = 'UTF-8';
+
+        $mail->Mailer = 'smtp';
+        $mail->Host = 'ssl://smtp.yandex.ru';
+        $mail->Port = 465;
+        $mail->SMTPAuth = true;
+        $mail->Username = $MyEmail; 
+        $mail->Password = $password; 
+
+        $mail->setFrom($MyEmail, '');
+
+        
+        $mail->addAddress($email, ''); 
+
+        $mail->Subject = 'Проверка';
+
+        $mail->msgHTML($message);
+
+        if ($mail->send()) { 
+            header('Location:../../pages/workplace.php');
+        }                
     }
 
     public function save_update_student(){
@@ -154,7 +183,7 @@ class db_handler{
             die("Ошибка" . $conn->connect_error);
         }
 
-        $sql = "CREATE DATABASE test";
+        $sql = "CREATE DATABASE www";
         if ($conn->query($sql) === TRUE) {
             echo "Создано";
         } else {

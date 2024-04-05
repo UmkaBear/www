@@ -1,5 +1,6 @@
 {
     "name": "www/students_portal",
+    "phpmailer/phpmailer": "^6.5",
     "authors": [
         {
             "name": "UmkaBear",
@@ -10,6 +11,7 @@
         "files": ["src/db_handler.php"]
     },
     "require": {
-        "vlucas/phpdotenv": "^5.6"
+        "vlucas/phpdotenv": "^5.6",
+        "phpmailer/phpmailer": "^6.9"
     }
 }
