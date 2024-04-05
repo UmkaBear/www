@@ -109,9 +109,17 @@ class db_handler{
         $check_user = mysqli_query($this->connect, "SELECT * FROM `users` WHERE `userlogin` = '$userlogin' AND `password` = '$password'");
         if (mysqli_num_rows($check_user) > 0) {
             $_SESSION['LoggedIn'] = true;
-            header("Location:../../pages/workplace.php?id=" . $row['id'] . "");
-        } else {
-            header('Location:../../index.php');
+            $row = mysqli_fetch_array($check_user);
+            if ($row['userlogin'] == $userlogin && $row['password'] == $password) {
+                if ($row['rule'] == "Педагог") {
+                    $_SESSION['rule'] = true;
+                } else {
+                    $_SESSION['rule'] = false;
+                }
+                header("Location:../../pages/workplace.php");
+            } else {
+                header('Location:../../index.php');
+            }
         }
         
     }
@@ -134,8 +142,10 @@ class db_handler{
                 echo '<td>' . $row['class'] . '</td>';
                 echo '<td>' . $row['email'] . '</td>';
                 echo '<td>' . $row['student_count'] . '</td>';
-                echo '<td><a href="update_student.php?id=' . $row['id'] . '">Изменить</a></td>';
-                echo '<td><a href="delete_students.php?id=' . $row['id'] . '">Удалить</a></td>';
+                if ($_SESSION['rule']){
+                    echo '<td><a href="update_student.php?id=' . $row['id'] . '">Изменить</a></td>';
+                    echo '<td><a href="delete_students.php?id=' . $row['id'] . '">Удалить</a></td>';
+                }
                 echo '</tr>';
             }
         } 
@@ -214,8 +224,10 @@ class db_handler{
                     echo '<td>' . $row['teacher'] . '</td>';
                     echo '<td>' . $row['class'] . '</td>';
                     echo '<td>' . $row['email'] . '</td>';
-                    echo '<td><a href="update_student.php?id=' . $row['id'] . '">Изменить</a></td>';
-                    echo '<td><a href="delete_students.php?id=' . $row['id'] . '">Удалить</a></td>';
+                    if ($_SESSION['rule']){
+                        echo '<td><a href="update_student.php?id=' . $row['id'] . '">Изменить</a></td>';
+                        echo '<td><a href="delete_students.php?id=' . $row['id'] . '">Удалить</a></td>';
+                    }
                     echo '</tr>';
                 }
             }

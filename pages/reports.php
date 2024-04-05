@@ -39,8 +39,12 @@
                         <th>Класс</th>
                         <th>Email</th>
                         <th>Кол. студентов</th>
-                        <th>Изменить</th>
-                        <th>Удалить</th>
+                        <?php 
+                            if ($_SESSION['rule']){
+                                echo "<th>Изменить</th>";
+                                echo "<th>Удалить</th>";
+                            }
+                        ?>
                     </tr>
                     </thead>
                     <tbody>
