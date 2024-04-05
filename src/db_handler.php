@@ -15,6 +15,8 @@ class db_handler{
     private $sqldb_password;
     private $database;
     private $connect;   
+    private $MyEmail;
+    private $email_password;
 
     public $row;
 
@@ -28,10 +30,11 @@ class db_handler{
     }
 
     public function sent_email(){
+        
         $email = $_POST['email'];
         $message = $_POST['message'];
-        $MyEmail = 'dfakhiev@yandex.ru';
-        $password = 'bvtvcgzdyalqzzwk';
+        $this->MyEmail = $_ENV["MyEmail"];
+        $this->email_password = $_ENV["email_password"];
 
         $mail = new PHPMailer();
         $mail->CharSet = 'UTF-8';
@@ -40,10 +43,10 @@ class db_handler{
         $mail->Host = 'ssl://smtp.yandex.ru';
         $mail->Port = 465;
         $mail->SMTPAuth = true;
-        $mail->Username = $MyEmail; 
-        $mail->Password = $password; 
+        $mail->Username = $this->MyEmail; 
+        $mail->Password = $this->email_password; 
 
-        $mail->setFrom($MyEmail, '');
+        $mail->setFrom($this->MyEmail, '');
 
         
         $mail->addAddress($email, ''); 
