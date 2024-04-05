@@ -1,13 +1,14 @@
 <?php
-    session_start();
-    require(__DIR__ . '/../vendor/autoload.php');
-    $db_handler_class = new db_handler();
-    if(!$_SESSION['LoggedIn']){
-        header('Location: /index.php');
-    }
+session_start();
+require(__DIR__ . '/../vendor/autoload.php');
+$db_handler_class = new db_handler();
+if (!$_SESSION['LoggedIn']) {
+    header('Location: /index.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,6 +19,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <title>Главная</title>
 </head>
+
 <body>
     <header>
 
@@ -33,25 +35,25 @@
                 <table>
                     <p>Студенты:</p>
                     <thead>
-                    <tr>
-                        <th>Роль</th>
-                        <th>Имя</th>
-                        <th>Фамилия</th>
-                        <th>Дата рождения</th>
-                        <th>Руководитель</th>
-                        <th>Класс</th>
-                        <th>Email</th>
-                        <?php 
-                            if ($_SESSION['rule']){
+                        <tr>
+                            <th>Роль</th>
+                            <th>Имя</th>
+                            <th>Фамилия</th>
+                            <th>Дата рождения</th>
+                            <th>Руководитель</th>
+                            <th>Класс</th>
+                            <th>Email</th>
+                            <?php
+                            if ($_SESSION['rule']) {
                                 echo "<th>Изменить</th>";
                                 echo "<th>Удалить</th>";
                             }
-                        ?>
-                    </tr>
+                            ?>
+                        </tr>
                     </thead>
                     <tbody>
                         <?php
-                            $db_handler_class->show_students();
+                        $db_handler_class->show_students();
                         ?>
                     </tbody>
                 </table>
@@ -62,4 +64,5 @@
 
     </footer>
 </body>
+
 </html>

@@ -2,14 +2,15 @@
 require(__DIR__ . '/../vendor/autoload.php');
 $db_handler_class = new db_handler();
 $row = $db_handler_class->update_student();
-    session_start();
-    $db_handler_class = new db_handler();
-    if(!$_SESSION['LoggedIn']){
-        header('Location: /index.php');
-    }
+session_start();
+$db_handler_class = new db_handler();
+if (!$_SESSION['LoggedIn']) {
+    header('Location: /index.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,22 +21,23 @@ $row = $db_handler_class->update_student();
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <title>Отчеты</title>
 </head>
+
 <body>
     <header>
 
     </header>
     <main>
-    <div class="container">
+        <div class="container">
             <h1>Изменить</h1>
-            <form class="form_authorization" action="/../src/submitForm/update.php?id=<?php echo $row['id'] ?>"  method="post">
-                
+            <form class="form_authorization" action="/../src/submitForm/update.php?id=<?php echo $row['id'] ?>" method="post">
+
                 <div class="username">
-                        <label for="username">Имя:</label>
-                        <input type="text" name="username" placeholder="Введите Имя" required value="<?php echo $row['username'] ?>">
+                    <label for="username">Имя:</label>
+                    <input type="text" name="username" placeholder="Введите Имя" required value="<?php echo $row['username'] ?>">
                 </div>
                 <div class="userlastname">
-                        <label for="userlastname">Фамилия:</label>
-                        <input type="text" name="userlastname" placeholder="Введите Фамилию" required value="<?php echo $row['userlastname'] ?>">
+                    <label for="userlastname">Фамилия:</label>
+                    <input type="text" name="userlastname" placeholder="Введите Фамилию" required value="<?php echo $row['userlastname'] ?>">
                 </div>
                 <div class="birthday">
                     <label for="birthday">День рождения:</label>
@@ -53,7 +55,7 @@ $row = $db_handler_class->update_student();
                     <button type="submit" name="save_update_student">Сохранить</button>
                     <a href="/pages/workplace.php">Назад</a>
                 </div>
-                
+
             </form>
         </div>
     </main>
@@ -61,4 +63,5 @@ $row = $db_handler_class->update_student();
 
     </footer>
 </body>
+
 </html>

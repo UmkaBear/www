@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <title>Авторизация</title>
 </head>
+
 <body>
     <header>
 
@@ -19,8 +21,8 @@
             <h1>Авторизация</h1>
             <form class="form_authorization" action="src/submitForm/login.php" method="post">
                 <div class="login">
-                        <label for="userlogin">Логин:</label>
-                        <input type="text" name="userlogin" placeholder="Введите логин:">
+                    <label for="userlogin">Логин:</label>
+                    <input type="text" name="userlogin" placeholder="Введите логин:">
                 </div>
                 <div class="password">
                     <label for="password">Пароль:</label>
@@ -30,7 +32,7 @@
                     <button type="submit">Войти</button>
                     <a href="pages/register.php">Регистрация</a>
                 </div>
-                
+
             </form>
         </div>
     </main>
@@ -38,4 +40,5 @@
 
     </footer>
 </body>
+
 </html>

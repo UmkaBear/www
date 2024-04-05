@@ -1,6 +1,7 @@
-<?php   
+<?php
 
 use Dotenv\Dotenv;
+
 require __DIR__ . '/../vendor/autoload.php';
 $dotenv = Dotenv::createImmutable(__DIR__ . '/../');
 $dotenv->load();
@@ -8,29 +9,31 @@ $dotenv->load();
 use PHPMailer\PHPMailer\PHPMailer;
 
 
-class db_handler{
+class db_handler
+{
 
     private $sqldb;
     private $sqldb_username;
     private $sqldb_password;
     private $database;
-    private $connect;   
+    private $connect;
     private $MyEmail;
     private $email_password;
 
     public $row;
 
-    function __construct(){
+    function __construct()
+    {
         $this->sqldb = $_ENV["db_host"];
         $this->sqldb_username = $_ENV["db_login"];
         $this->sqldb_password = $_ENV["db_password"];
         $this->database = $_ENV["db_database"];
         $this->connect = mysqli_connect($this->sqldb, $this->sqldb_username, $this->sqldb_password, $this->database);
-        
     }
 
-    public function sent_email(){
-        
+    public function sent_email()
+    {
+
         $email = $_POST['email'];
         $message = $_POST['message'];
         $this->MyEmail = $_ENV["MyEmail"];
@@ -43,35 +46,36 @@ class db_handler{
         $mail->Host = 'ssl://smtp.yandex.ru';
         $mail->Port = 465;
         $mail->SMTPAuth = true;
-        $mail->Username = $this->MyEmail; 
-        $mail->Password = $this->email_password; 
+        $mail->Username = $this->MyEmail;
+        $mail->Password = $this->email_password;
 
         $mail->setFrom($this->MyEmail, '');
 
-        
-        $mail->addAddress($email, ''); 
+
+        $mail->addAddress($email, '');
 
         $mail->Subject = 'Проверка';
 
         $mail->msgHTML($message);
 
-        if ($mail->send()) { 
+        if ($mail->send()) {
             header('Location:../../pages/workplace.php');
-        }                
+        }
     }
 
-    public function save_update_student(){
+    public function save_update_student()
+    {
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
 
-        $a_name = $_POST['username'];
-        $a_lastname = $_POST['userlastname'];
-        $a_date = $_POST['birthday'];
-        $a_email = $_POST['email'];
-        $a_class = $_POST['class'];
-        $query = "update `users` set `username`='$a_name',`userlastname`='$a_lastname',`birthday`='$a_date',`email`='$a_email',`class`='$a_class' where `id` = '$id'";
-        $result = mysqli_query($this->connect, $query);
-        header('Location:../../pages/workplace.php');
+            $a_name = $_POST['username'];
+            $a_lastname = $_POST['userlastname'];
+            $a_date = $_POST['birthday'];
+            $a_email = $_POST['email'];
+            $a_class = $_POST['class'];
+            $query = "update `users` set `username`='$a_name',`userlastname`='$a_lastname',`birthday`='$a_date',`email`='$a_email',`class`='$a_class' where `id` = '$id'";
+            $result = mysqli_query($this->connect, $query);
+            header('Location:../../pages/workplace.php');
         }
     }
     public function update_student()
@@ -82,12 +86,12 @@ class db_handler{
             $query = "select * from `users` where `id` = '$id'";
             $result = mysqli_query($this->connect, $query);
             $row = mysqli_fetch_assoc($result);
-            
         }
         return $row;
     }
 
-    public function createUser(){
+    public function createUser()
+    {
         $rule = $_POST["rule"];
         $username = $_POST["username"];
         $userlastname = $_POST["userlastname"];
@@ -100,7 +104,8 @@ class db_handler{
         $result = mysqli_query($this->connect, $sql);
         header('Location:../../index.php');
     }
-    public function loginUser(){
+    public function loginUser()
+    {
         $userlogin = $_POST["userlogin"];
         $password = $_POST["password"];
         $query = "SELECT * FROM users";
@@ -121,10 +126,10 @@ class db_handler{
                 header('Location:../../index.php');
             }
         }
-        
     }
 
-    public function show_teacher(){
+    public function show_teacher()
+    {
         $query = "SELECT teachers.*, COUNT(students.id) as student_count
         FROM USERS AS teachers
         LEFT JOIN USERS AS students ON students.class = teachers.class
@@ -147,15 +152,15 @@ class db_handler{
                 echo '<td>' . $row['class'] . '</td>';
                 echo '<td>' . $row['email'] . '</td>';
                 echo '<td>' . $row['student_count'] . '</td>';
-                if ($_SESSION['rule']){
+                if ($_SESSION['rule']) {
                     echo '<td><a href="update_student.php?id=' . $row['id'] . '">Изменить</a></td>';
                     echo '<td><a href="delete_students.php?id=' . $row['id'] . '">Удалить</a></td>';
                 }
                 echo '</tr>';
             }
-        } 
+        }
     }
-    
+
     public function restoreDatabaseTables($dbHost, $dbUsername, $dbPassword, $dbName, $filePath)
     {
 
@@ -214,7 +219,8 @@ class db_handler{
         $conn->close();
     }
 
-    function show_students() {
+    function show_students()
+    {
         $query = "SELECT
         students.*,
         teachers.userlastname AS teacher
@@ -240,9 +246,9 @@ class db_handler{
             AND teachers.rule = 'Педагог'
         )
     ";
-        
+
         $result = mysqli_query($this->connect, $query);
-        
+
         if (mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
                 echo '<tr>';
@@ -258,11 +264,12 @@ class db_handler{
                     echo '<td><a href="delete_students.php?id=' . $row['id'] . '">Удалить</a></td>';
                 }
                 echo '</tr>';
-            } 
-        } 
+            }
+        }
     }
-    
-    public function delete_student(){
+
+    public function delete_student()
+    {
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
 
@@ -271,6 +278,4 @@ class db_handler{
             header('Location:/../pages/workplace.php');
         } else echo "Ошибка";
     }
-    
-    
-}   
+}

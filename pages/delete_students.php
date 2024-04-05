@@ -4,12 +4,13 @@ require(__DIR__ . '/../vendor/autoload.php');
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
-if(!$_SESSION['LoggedIn']){
+if (!$_SESSION['LoggedIn']) {
     header('Location: /index.php');
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,6 +21,7 @@ if(!$_SESSION['LoggedIn']){
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <title>Удалить?</title>
 </head>
+
 <body>
     <header>
 
@@ -27,16 +29,17 @@ if(!$_SESSION['LoggedIn']){
     <main>
         <div class="container">
             <form class="form_authorization" action="" method="GET">
-            <h1>Удалить ученика?</h1>
-            <div class="button_form_authorization">
-                <a href="/../src/submitForm/delete.php?id=<?php echo $id; ?>">Подтвердить</a>
-                <a href="workplace.php" class="close">Закрыть окно</a>
-            </div>
-        </form>
+                <h1>Удалить ученика?</h1>
+                <div class="button_form_authorization">
+                    <a href="/../src/submitForm/delete.php?id=<?php echo $id; ?>">Подтвердить</a>
+                    <a href="workplace.php" class="close">Закрыть окно</a>
+                </div>
+            </form>
         </div>
     </main>
     <footer>
 
     </footer>
 </body>
+
 </html>

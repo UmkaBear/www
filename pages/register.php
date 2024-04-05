@@ -5,6 +5,7 @@ $db_handler_class = new db_handler();
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +16,7 @@ $db_handler_class = new db_handler();
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <title>Регистрация</title>
 </head>
+
 <body>
     <header>
 
@@ -24,27 +26,27 @@ $db_handler_class = new db_handler();
             <h1>Регистрация</h1>
             <form class="form_authorization" action="/../src/submitForm/register.php" method="post">
                 <div class="rule">
-                        <label for="rule">Вы:</label>
-                        <select name="rule">
-                            <option value="Студент">Студент</option>
-                            <option value="Педагог">Преподователь</option>
-                        </select>
+                    <label for="rule">Вы:</label>
+                    <select name="rule">
+                        <option value="Студент">Студент</option>
+                        <option value="Педагог">Преподователь</option>
+                    </select>
                 </div>
                 <div class="username">
-                        <label for="username">Имя:</label>
-                        <input type="text" name="username" placeholder="Введите Имя" required>
+                    <label for="username">Имя:</label>
+                    <input type="text" name="username" placeholder="Введите Имя" required>
                 </div>
                 <div class="userlastname">
-                        <label for="userlastname">Фамилия:</label>
-                        <input type="text" name="userlastname" placeholder="Введите Фамилию" required>
+                    <label for="userlastname">Фамилия:</label>
+                    <input type="text" name="userlastname" placeholder="Введите Фамилию" required>
                 </div>
                 <div class="birthday">
                     <label for="birthday">День рождения:</label>
                     <input type="date" name="birthday" required>
                 </div>
                 <div class="login">
-                        <label for="userlogin">Логин:</label>
-                        <input type="text" name="userlogin" placeholder="Введите логин" required>
+                    <label for="userlogin">Логин:</label>
+                    <input type="text" name="userlogin" placeholder="Введите логин" required>
                 </div>
                 <div class="password">
                     <label for="password">Пароль:</label>
@@ -62,7 +64,7 @@ $db_handler_class = new db_handler();
                     <button type="submit">Отправить</button>
                     <a href="/./index.php">Авторизироваться</a>
                 </div>
-                
+
             </form>
         </div>
     </main>
@@ -70,4 +72,5 @@ $db_handler_class = new db_handler();
 
     </footer>
 </body>
+
 </html>

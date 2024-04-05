@@ -8,6 +8,7 @@ body {
     font-weight: 400;
     font-style: normal;
 }
+
 table {
     width: 100%;
     margin-bottom: 20px;
@@ -31,6 +32,7 @@ table td {
     border-bottom: 5px solid #e3e3e3;
     border: 2px solid #e3e3e3;
 }
+
 .button_place {
     color: #717171;
     text-decoration: none;
@@ -85,7 +87,7 @@ select {
 .email,
 .username,
 .userlastname,
-.rule,  
+.rule,
 .birthday,
 .class {
     display: flex;
@@ -112,7 +114,8 @@ button:hover {
     display: flex;
     align-items: center;
 }
-.button_form_authorization a{
+
+.button_form_authorization a {
     margin: 10px;
 }
 
@@ -124,12 +127,11 @@ a {
     text-align: center;
     width: 130px;
 }
-a:hover{
+
+a:hover {
     background-color: #e6e6ff;
 }
 
 select {
     width: 210px;
 }
-
-  

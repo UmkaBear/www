@@ -2,12 +2,13 @@
 session_start();
 require(__DIR__ . '/../vendor/autoload.php');
 $db_handler_class = new db_handler();
-if(!$_SESSION['LoggedIn']){
+if (!$_SESSION['LoggedIn']) {
     header('Location: /index.php');
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,6 +19,7 @@ if(!$_SESSION['LoggedIn']){
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <title>Отправить Email</title>
 </head>
+
 <body>
     <header>
 
@@ -27,16 +29,16 @@ if(!$_SESSION['LoggedIn']){
             <h1>Отравить Email</h1>
             <form class="form_authorization" action="/../src/submitForm/sentEmail.php" method="post">
                 <div class="Email">
-                        <label for="email">Email:</label>
-                        <input type="text" name="email" placeholder="Кому:">
+                    <label for="email">Email:</label>
+                    <input type="text" name="email" placeholder="Кому:">
                 </div>
-                    <label for="message">Сообщение:</label>
-                    <textarea name="message" id="message" required></textarea>
+                <label for="message">Сообщение:</label>
+                <textarea name="message" id="message" required></textarea>
                 <div class="button_form_authorization">
                     <button type="submit">Отправить</button>
                     <a href="workplace.php">Назад</a>
                 </div>
-                
+
             </form>
         </div>
     </main>
@@ -44,4 +46,5 @@ if(!$_SESSION['LoggedIn']){
 
     </footer>
 </body>
+
 </html>
