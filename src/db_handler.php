@@ -127,10 +127,15 @@ class db_handler{
     public function show_teacher(){
         $query = "SELECT teachers.*, COUNT(students.id) as student_count
         FROM USERS AS teachers
-        LEFT JOIN USERS AS students 
-        on students.class = teachers.class
+        LEFT JOIN USERS AS students ON students.class = teachers.class
         where teachers.rule = 'Педагог' AND students.rule = 'Студент'
-        GROUP BY teachers.id";
+        GROUP BY teachers.id
+        UNION
+        SELECT teachers.*, 0 as student_count
+        From USERS AS teachers
+        WHERE teachers.rule = 'Педагог' AND NOT EXISTS (
+            SELECT 1 FROM USERS AS students WHERE students.rule = 'Студент' AND students.class = teachers.class
+        )";
         $result = mysqli_query($this->connect, $query);
         if (mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
@@ -149,7 +154,9 @@ class db_handler{
                 echo '</tr>';
             }
         } 
-    }public function restoreDatabaseTables($dbHost, $dbUsername, $dbPassword, $dbName, $filePath)
+    }
+    
+    public function restoreDatabaseTables($dbHost, $dbUsername, $dbPassword, $dbName, $filePath)
     {
 
         $db = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
@@ -207,32 +214,54 @@ class db_handler{
         $conn->close();
     }
 
-    public function show_students(){
-        $query = "SELECT students.*, teachers.userlastname AS teacher 
-        FROM users AS students
-        JOIN users AS teachers ON students.class = teachers.class
-        WHERE students.rule = 'Студент' AND teachers.rule = 'Педагог'";
+    function show_students() {
+        $query = "SELECT
+        students.*,
+        teachers.userlastname AS teacher
+    FROM
+        users AS students
+    JOIN
+        users AS teachers ON students.class = teachers.class
+    WHERE
+        students.rule = 'Студент'
+        AND teachers.rule = 'Педагог'
+    UNION
+    SELECT
+        students.*,
+        NULL AS teacher
+    FROM
+        users AS students
+    WHERE
+        students.rule = 'Студент'
+        AND NOT EXISTS (
+            SELECT 1
+            FROM users AS teachers
+            WHERE students.class = teachers.class
+            AND teachers.rule = 'Педагог'
+        )
+    ";
+        
         $result = mysqli_query($this->connect, $query);
+        
         if (mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
-                if ($row['rule'] != 'Педагог') {
-                    echo '<tr>';
-                    echo '<td>' . $row['rule'] . '</td>';
-                    echo '<td>' . $row['username'] . '</td>';
-                    echo '<td>' . $row['userlastname'] . '</td>';
-                    echo '<td>' . $row['birthday'] . '</td>';
-                    echo '<td>' . $row['teacher'] . '</td>';
-                    echo '<td>' . $row['class'] . '</td>';
-                    echo '<td>' . $row['email'] . '</td>';
-                    if ($_SESSION['rule']){
-                        echo '<td><a href="update_student.php?id=' . $row['id'] . '">Изменить</a></td>';
-                        echo '<td><a href="delete_students.php?id=' . $row['id'] . '">Удалить</a></td>';
-                    }
-                    echo '</tr>';
+                echo '<tr>';
+                echo '<td>' . $row['rule'] . '</td>';
+                echo '<td>' . $row['username'] . '</td>';
+                echo '<td>' . $row['userlastname'] . '</td>';
+                echo '<td>' . $row['birthday'] . '</td>';
+                echo '<td>' . $row['teacher'] . '</td>';
+                echo '<td>' . $row['class'] . '</td>';
+                echo '<td>' . $row['email'] . '</td>';
+                if ($_SESSION['rule']) {
+                    echo '<td><a href="update_student.php?id=' . $row['id'] . '">Изменить</a></td>';
+                    echo '<td><a href="delete_students.php?id=' . $row['id'] . '">Удалить</a></td>';
                 }
-            }
+                echo '</tr>';
+            } 
         } 
     }
+    
     public function delete_student(){
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
