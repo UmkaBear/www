@@ -27,6 +27,7 @@
             <div class="button_place">
                 <a class="button_p" href="sent_email.php">Отправить Email</a>
                 <a class="button_p" href="reports.php">Отчет</a>
+                <a class="button_p" href="/../src/submitForm/loginOut.php">Выйти</a>
             </div>
             <div>
                 <table>
