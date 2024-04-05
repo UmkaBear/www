@@ -107,6 +107,65 @@ class db_handler{
             }
         } 
     }
+
+    public function restoreDatabaseTables($dbHost, $dbUsername, $dbPassword, $dbName, $filePath)
+    {
+
+        $db = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
+
+        $templine = '';
+
+
+        $lines = file($filePath);
+
+        $error = '';
+
+
+        foreach ($lines as $line) {
+
+            if (substr($line, 0, 2) == '--' || $line == '') {
+                continue;
+            }
+
+            $templine .= $line;
+
+
+            if (substr(trim($line), -1, 1) == ';') {
+
+                if (!$db->query($templine)) {
+                    $error .= 'Ошибка<b>' .
+                        $templine . '</b>": ' . $db->error . '<br /><br />';
+                }
+
+
+                $templine = '';
+            }
+        }
+        return !empty($error) ? $error : true;
+    }
+
+    public function createDatabase()
+    {
+        $mysqldb = $_ENV["DB_HOST"];
+        $mysqldb_username = $_ENV["DB_LOGIN"];
+        $pass = $_ENV["DB_PASSWORD"];
+
+        $conn = new mysqli($mysqldb, $mysqldb_username, $pass);
+
+        if ($conn->connect_error) {
+            die("Ошибка" . $conn->connect_error);
+        }
+
+        $sql = "CREATE DATABASE test";
+        if ($conn->query($sql) === TRUE) {
+            echo "Создано";
+        } else {
+            echo "Ошибка" . $conn->error;
+        }
+
+        $conn->close();
+    }
+
     public function show_students(){
         $query = "SELECT students.*, teachers.userlastname AS teacher 
         FROM users AS students
