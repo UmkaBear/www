@@ -106,9 +106,7 @@ class db_handler{
                 echo '</tr>';
             }
         } 
-    }
-
-    public function restoreDatabaseTables($dbHost, $dbUsername, $dbPassword, $dbName, $filePath)
+    }public function restoreDatabaseTables($dbHost, $dbUsername, $dbPassword, $dbName, $filePath)
     {
 
         $db = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
