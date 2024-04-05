@@ -2,6 +2,11 @@
 require(__DIR__ . '/../vendor/autoload.php');
 $db_handler_class = new db_handler();
 $row = $db_handler_class->update_student();
+    session_start();
+    $db_handler_class = new db_handler();
+    if(!$_SESSION['LoggedIn']){
+        header('Location: /index.php');
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">

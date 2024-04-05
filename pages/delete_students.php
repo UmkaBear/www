@@ -4,6 +4,9 @@ require(__DIR__ . '/../vendor/autoload.php');
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
+if(!$_SESSION['LoggedIn']){
+    header('Location: /index.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

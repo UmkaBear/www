@@ -105,6 +105,7 @@ class db_handler{
         $row = mysqli_fetch_assoc($result);
         $check_user = mysqli_query($this->connect, "SELECT * FROM `users` WHERE `userlogin` = '$userlogin' AND `password` = '$password'");
         if (mysqli_num_rows($check_user) > 0) {
+            $_SESSION['LoggedIn'] = true;
             header("Location:../../pages/workplace.php?id=" . $row['id'] . "");
         } else {
             header('Location:../../index.php');

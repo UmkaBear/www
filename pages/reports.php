@@ -1,6 +1,10 @@
 <?php
+    session_start();
     require(__DIR__ . '/../vendor/autoload.php');
     $db_handler_class = new db_handler();
+    if(!$_SESSION['LoggedIn']){
+        header('Location: /index.php');
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
