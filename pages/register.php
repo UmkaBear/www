@@ -24,7 +24,7 @@ $db_handler_class = new db_handler();
     <main>
         <div class="container">
             <h1>Регистрация</h1>
-            <form class="form_authorization" action="/../src/submitForm/register.php" method="post">
+            <form id="form_authorization" class="form_authorization" action="/../src/submitForm/register.php" method="post">
                 <div class="rule">
                     <label for="rule">Вы:</label>
                     <select name="rule">
@@ -71,6 +71,36 @@ $db_handler_class = new db_handler();
     <footer>
 
     </footer>
+    <script>
+        $(document).on("submit", "#form_authorization", function () {
+
+            // Получаем данные формы
+            const sign_up_form = $(this);
+            const form_data = JSON.stringify(form_authorization.serializeObject());
+
+            // Отправка данных формы в API
+            $.ajax({
+                url: <?php $_SERVER['DOCUMENT_ROOT']?>"api/create_user.php",
+                type: "POST",
+                contentType: "application/json",
+                data: form_data,
+                success: result => {
+
+                    // В случае удачного завершения запроса к серверу,
+                    // сообщим пользователю, что он успешно зарегистрировался и очистим поля ввода
+                    $("#response").html("<div class='alert alert-success'>Регистрация завершена успешно. Пожалуйста, войдите</div>");
+                    form_authorization.find("input").val("");
+                },
+                error: (xhr, resp, text) => {
+
+                    // При ошибке сообщить пользователю, что регистрация не удалась
+                    $("#response").html("<div class='alert alert-danger'>Невозможно зарегистрироваться. Пожалуйста, свяжитесь с администратором</div>");
+                }
+            });
+
+            return false;
+            });
+    </script>
 </body>
 
 </html>
