@@ -11,3 +11,9 @@ Create user:
   "email": "dfakhiev@yandex.ru",
   "class": "9Б"
 }
+
+Login
+{
+    "userlogin": "123",
+    "password": "123"
+}
